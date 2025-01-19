@@ -25,6 +25,7 @@ public class Server {
                 ClientManager clientManager = new ClientManager(socket, this);
                 // Se añade el cliente a la lista de clientes
                 clients.add(clientManager);
+                System.out.println("Cliente conectado desde " + socket.getInetAddress().getHostAddress());
                 // Se inicia el hilo que gestiona la entrada y la salida de mensajes del cliente
                 new Thread(clientManager).start();
             } catch (IOException e) {

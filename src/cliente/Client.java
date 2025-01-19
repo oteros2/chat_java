@@ -11,7 +11,9 @@ public class Client {
 
     public Client(String address, int port) throws IOException {
         try {
+            // Se crea un socket para conectarse al servidor
             socket = new Socket(address, port);
+            // Se crean los flujos de entrada y salida
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("Conectado al servidor en " + address + ":" + port);

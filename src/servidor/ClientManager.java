@@ -25,15 +25,16 @@ public class ClientManager implements Runnable {
             out = new PrintWriter(socket.getOutputStream(), true);
 
             // Pide el nombre del cliente
-            out.print("Introduce tu nombre: ");
+            out.println("Introduce tu nombre: ");
             clientName = in.readLine();
+            server.broadcast("Usuario " + clientName + " conectado", this);
 
             String message;
             // Lee los mensajes del cliente y los reenvía a todos los clientes con un formato de fecha, hora y nombre del cliente
             while ((message = in.readLine()) != null) {
-                String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                String timestamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
                 String formattedMessage = String.format("[%s] %s: %s", timestamp, clientName, message);
-                System.out.println("Recibido: " + formattedMessage);
+                System.out.println(formattedMessage);
                 server.broadcast(formattedMessage, this);
             }
         } catch (IOException e) {
