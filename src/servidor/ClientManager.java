@@ -51,4 +51,16 @@ public class ClientManager implements Runnable {
     public void sendMessage(String message) {
         out.println(message);
     }
+
+    // Este metodo se encarga de cerrar el cliente
+    public void stop() {
+        try {
+            in.close();
+            out.close();
+            socket.close();
+            System.out.println("Cliente desconectado");
+        } catch (IOException e) {
+            System.out.println("Error al cerrar el cliente");
+        }
+    }
 }

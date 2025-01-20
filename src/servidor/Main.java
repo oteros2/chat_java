@@ -1,5 +1,7 @@
 package servidor;
 
+import UI.Chat;
+
 import java.io.IOException;
 
 public class Main {

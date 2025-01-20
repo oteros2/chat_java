@@ -22,7 +22,7 @@ public class Client {
         }
     }
 
-    // Este metodo se encarga de leer los mensajes del servidor y de enviar los mensajes al servidor
+    // Este metodo se encarga de leer los mensajes del cliente y de enviar los mensajes al servidor
     public void start() {
         // Se inicia un hilo que se encarga de leer los mensajes del servidor
         new Thread(new ReadMessage()).start();
@@ -31,6 +31,18 @@ public class Client {
         while (true) {
             String message = scanner.nextLine();
             out.println(message);
+        }
+    }
+
+    // Este metodo se encarga de cerrar el cliente
+    public void stop() {
+        try {
+            in.close();
+            out.close();
+            socket.close();
+            System.out.println("Cliente desconectado");
+        } catch (IOException e) {
+            System.out.println("Error al cerrar el cliente");
         }
     }
 

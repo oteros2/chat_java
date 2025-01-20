@@ -25,12 +25,25 @@ public class Server {
                 ClientManager clientManager = new ClientManager(socket, this);
                 // Se añade el cliente a la lista de clientes
                 clients.add(clientManager);
-                System.out.println("Cliente conectado desde " + socket.getInetAddress().getHostAddress());
+                System.out.println("Cliente conectado desde " + socket.getRemoteSocketAddress());
                 // Se inicia el hilo que gestiona la entrada y la salida de mensajes del cliente
                 new Thread(clientManager).start();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    // Este metodo se encarga de cerrar el servidor y de cerrar todos los clientes
+    public void stop() {
+        try {
+            serverSocket.close();
+            for (ClientManager client : clients) {
+                client.stop();
+            }
+            System.out.println("Servidor cerrado");
+        } catch (IOException e) {
+            System.out.println("Error al cerrar el servidor");
         }
     }
 
