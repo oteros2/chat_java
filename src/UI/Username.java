@@ -2,6 +2,10 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import servidor.ClientManager;
 
 public class Username {
     private JFrame frame;
@@ -9,14 +13,22 @@ public class Username {
     private JLabel label;
     private JTextField textField;
     private JButton button;
+    private String username;
 
-    public Username() {
-        frame = new JFrame("Username");
+    public Username(ClientManager clientManager) {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        frame = new JFrame("Nombre de Usuario");
         panel = new JPanel();
-        label = new JLabel("Enter your username:");
+        label = new JLabel("Introduzca nombre de usuario:");
         textField = new JTextField(20);
         button = new JButton("Enter");
 
+        button.setBackground(Color.GREEN);
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -38,5 +50,21 @@ public class Username {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        button.addActionListener(e -> {
+            username = textField.getText();
+            clientManager.setClientName(username);
+            frame.dispose();
+            new Chat(username);
+        });
+
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    button.doClick();
+                }
+            }
+        });
     }
 }

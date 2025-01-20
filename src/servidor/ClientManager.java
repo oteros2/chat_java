@@ -10,7 +10,7 @@ public class ClientManager implements Runnable {
     private Server server;
     private PrintWriter out;
     private BufferedReader in;
-    private String clientName;
+    private String clientName = "Anónimo";
 
     public ClientManager(Socket socket, Server server) {
         this.socket = socket;
@@ -25,8 +25,7 @@ public class ClientManager implements Runnable {
             out = new PrintWriter(socket.getOutputStream(), true);
 
             // Pide el nombre del cliente
-            out.println("Introduce tu nombre: ");
-            clientName = in.readLine();
+            new UI.Username(this);
             server.broadcast("Usuario " + clientName + " conectado", this);
 
             String message;
@@ -46,6 +45,10 @@ public class ClientManager implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public void sendMessage(String message) {
