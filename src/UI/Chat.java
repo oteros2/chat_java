@@ -40,6 +40,7 @@ public class Chat {
         frame.add(panel);
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }
