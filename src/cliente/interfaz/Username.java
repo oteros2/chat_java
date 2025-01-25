@@ -1,11 +1,10 @@
-package UI;
+package cliente.interfaz;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-import servidor.ClientManager;
+import cliente.Client;
 
 public class Username {
     private JFrame frame;
@@ -15,7 +14,7 @@ public class Username {
     private JButton button;
     private String username;
 
-    public Username(ClientManager clientManager) {
+    public Username(Client client) {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
@@ -47,15 +46,16 @@ public class Username {
 
         frame.add(panel);
         frame.setSize(300, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         button.addActionListener(e -> {
             username = textField.getText();
-            clientManager.setClientName(username);
+            client.setUsername(username);
+            Chat chat = new Chat(username);
+            client.setChat(chat);
             frame.dispose();
-            new Chat(username);
         });
 
         textField.addKeyListener(new KeyAdapter() {

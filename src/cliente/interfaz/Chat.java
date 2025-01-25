@@ -1,4 +1,4 @@
-package UI;
+package cliente.interfaz;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,12 +59,12 @@ public class Chat {
 
         frame.add(panel);
         frame.setSize(800, 800);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Chat("Pepe");
+    public void addMessage(String message){
+        textArea.append(message + "\n");
     }
 }

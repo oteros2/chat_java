@@ -49,11 +49,18 @@ public class Server {
 
     // Este metodo se encarga de enviar un mensaje a todos los clientes excepto al
     // propio cliente que se pasa como parametro.
-    public synchronized void broadcast(String message, ClientManager excludeClient) {
+    public synchronized void broadcast(String message) {
         for (ClientManager client : clients) {
-            if (client != excludeClient) {
                 client.sendMessage(message);
             }
+    }
+
+    public static void main(String[] args) {
+        try {
+            Server server = new Server(49000);
+            server.start();
+        } catch (IOException e) {
+            System.out.println("Error al iniciar el servidor");
         }
     }
 }

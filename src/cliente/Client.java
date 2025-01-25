@@ -1,5 +1,7 @@
 package cliente;
 
+import cliente.interfaz.Chat;
+import cliente.interfaz.Username;
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -8,12 +10,12 @@ public class Client {
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
+    private String username;
+    private Chat chat;
 
     public Client(String address, int port) throws IOException {
         try {
-            // Se crea un socket para conectarse al servidor
             socket = new Socket(address, port);
-            // Se crean los flujos de entrada y salida
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("Conectado al servidor en " + address + ":" + port);
@@ -22,19 +24,24 @@ public class Client {
         }
     }
 
-    // Este metodo se encarga de leer los mensajes del cliente y de enviar los mensajes al servidor
+    public void setUsername(String username) {
+        this.username = username;
+        out.println(username);
+    }
+
+    public void setChat(Chat chat) {
+        this.chat = chat;
+    }
+
     public void start() {
-        // Se inicia un hilo que se encarga de leer los mensajes del servidor
         new Thread(new ReadMessage()).start();
         Scanner scanner = new Scanner(System.in);
-        // Se lee los mensajes del usuario y se envian al servidor
         while (true) {
             String message = scanner.nextLine();
             out.println(message);
         }
     }
 
-    // Este metodo se encarga de cerrar el cliente
     public void stop() {
         try {
             in.close();
@@ -46,7 +53,6 @@ public class Client {
         }
     }
 
-    // Clase interna que se encarga de leer los mensajes del servidor
     private class ReadMessage implements Runnable {
         @Override
         public void run() {
@@ -54,11 +60,24 @@ public class Client {
                 String message;
                 while ((message = in.readLine()) != null) {
                     System.out.println(message);
+                    if (chat != null){
+                        chat.addMessage(message);
+                    }
                 }
             } catch (IOException e) {
                 System.out.println("Error al leer mensajes del servidor");
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            Client client = new Client("localhost", 49000);
+            new Username(client);
+            client.start();
+        } catch (IOException e) {
+            System.out.println("Error al conectar con el servidor");
         }
     }
 }
