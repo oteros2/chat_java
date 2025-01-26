@@ -2,7 +2,6 @@ package cliente;
 
 import cliente.interfaz.Chat;
 import cliente.interfaz.Username;
-
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
@@ -41,16 +40,7 @@ public class Client {
     }
 
     public void stop() {
-        try {
-            readMessageThread.interrupt();
-            in.close();
-            out.close();
-            socket.close();
             System.exit(0);
-        } catch (IOException e) {
-           JOptionPane.showMessageDialog(null, "Error al desconectar del servidor",
-                   "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     private class ReadMessage implements Runnable {
@@ -60,7 +50,12 @@ public class Client {
                 while (Thread.currentThread().isAlive()) {
                     String message = in.readLine();
                     if (chat != null) {
-                        chat.addMessage(message);
+                        if (message.startsWith("Usuarios conectados:\n")) {
+                            chat.updateUsers(message);
+                            System.out.println(message);
+                        } else {
+                            chat.addMessage(message);
+                        }
                     }
                 }
             } catch (IOException e) {

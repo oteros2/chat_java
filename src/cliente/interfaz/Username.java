@@ -1,3 +1,4 @@
+// src/cliente/interfaz/Username.java
 package cliente.interfaz;
 
 import javax.swing.*;
@@ -28,7 +29,12 @@ public class Username {
         textField = new JTextField(20);
         button = new JButton("Enter");
 
-        button.setBackground(Color.GREEN);
+        label.setFont(new Font("Arial", Font.PLAIN, 18));
+        textField.setFont(new Font("Arial", Font.PLAIN, 18));
+        button.setFont(new Font("Arial", Font.BOLD, 16));
+        button.setBackground(new Color(0, 153, 76));
+        button.setForeground(Color.WHITE);
+
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -46,7 +52,7 @@ public class Username {
         panel.add(button, gbc);
 
         frame.add(panel);
-        frame.setSize(300, 200);
+        frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);

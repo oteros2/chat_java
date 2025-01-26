@@ -65,4 +65,8 @@ public class ClientManager implements Runnable {
             System.out.println("Error al cerrar el cliente");
         }
     }
+
+    public String getClientName() {
+        return clientName;
+    }
 }

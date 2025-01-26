@@ -1,7 +1,6 @@
 package cliente.interfaz;
 
 import cliente.Client;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -42,8 +41,8 @@ public class Chat {
         usersArea.setWrapStyleWord(true);
         usersArea.setText("Usuarios conectados:\n");
 
-        sendButton.setBackground(Color.GREEN);
-        disconnectButton.setBackground(Color.RED);
+        sendButton.setBackground(new Color(0, 153, 76));
+        disconnectButton.setBackground(new Color(204, 0, 0));
 
         sendButton.addActionListener(e -> {
             String message = textField.getText();
@@ -96,5 +95,9 @@ public class Chat {
     public void addMessage(String message){
         textArea.append(message + "\n");
         textArea.setCaretPosition(textArea.getDocument().getLength());
+    }
+
+    public void updateUsers(String users) {
+        usersArea.setText(users);
     }
 }

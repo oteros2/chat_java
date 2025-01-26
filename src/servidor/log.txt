@@ -8,3 +8,109 @@ Usuario Lolo conectado
 [26-01-2025 12:12:38] Juan: Hola lolo como estas
 Usuario Juan desconectado
 Usuario Lolo desconectado
+Usuario Juan conectado
+Usuario Juan desconectado
+Usuario Juan conectado
+[26-01-2025 13:01:37] Juan: hola
+Usuario Antonio conectado
+Usuario Juan desconectado
+Usuario Antonio desconectado
+Usuario Juan conectado
+Usuario Antonio conectado
+Usuario Juan desconectado
+Usuario Antonio desconectado
+Usuario Manolo conectado
+Usuario Antonio conectado
+[26-01-2025 13:06:19] Antonio: sdfdsf
+[26-01-2025 13:06:21] Antonio: dsfdsfdsfdsf
+[26-01-2025 13:06:23] Antonio: gdsgdsgsd
+[26-01-2025 13:06:24] Antonio: sdf
+[26-01-2025 13:06:24] Antonio: dsf
+[26-01-2025 13:06:24] Antonio: ds
+[26-01-2025 13:06:24] Antonio: fsd
+[26-01-2025 13:06:24] Antonio: f
+[26-01-2025 13:06:24] Antonio: sdf
+[26-01-2025 13:06:24] Antonio: ds
+[26-01-2025 13:06:25] Antonio: fsd
+[26-01-2025 13:06:25] Antonio: f
+Usuario Manolo desconectado
+Usuario Antonio desconectado
+Usuario hola conectado
+Usuario holita conectado
+[26-01-2025 13:07:39] hola: dsfdsf
+[26-01-2025 13:07:40] hola: dsf
+[26-01-2025 13:07:40] hola: sd
+[26-01-2025 13:07:40] hola: f
+[26-01-2025 13:07:40] hola: sd
+[26-01-2025 13:07:45] holita: holsdflsdlfhskdfsd
+[26-01-2025 13:07:45] holita: ksdfjdkf
+[26-01-2025 13:07:46] holita: dkfjdkf
+[26-01-2025 13:07:47] holita: kdjfkdjf
+[26-01-2025 13:07:48] holita: dkfjdf
+[26-01-2025 13:07:49] holita: kdjfkd
+Usuario holita desconectado
+Usuario hola desconectado
+Usuario pepe conectado
+Usuario pepe desconectado
+Usuario Juan conectado
+Usuario Juan desconectado
+Usuario Juan conectado
+[26-01-2025 13:13:33] Juan: ddsf
+[26-01-2025 13:13:40] Juan: dsfdsf
+[26-01-2025 13:13:41] Juan: df
+[26-01-2025 13:13:41] Juan: df
+[26-01-2025 13:13:41] Juan: d
+[26-01-2025 13:13:42] Juan: fd
+[26-01-2025 13:13:42] Juan: f
+[26-01-2025 13:13:42] Juan: df
+[26-01-2025 13:13:42] Juan: d
+Usuario Juan desconectado
+Usuario Pepe conectado
+Usuario Juan conectado
+[26-01-2025 13:14:29] Pepe: xzcxsd
+[26-01-2025 13:14:31] Juan: sds
+[26-01-2025 13:14:32] Juan: sds
+[26-01-2025 13:14:32] Juan: ds
+[26-01-2025 13:14:32] Juan: d
+[26-01-2025 13:14:32] Juan: sd
+[26-01-2025 13:14:32] Juan: s
+[26-01-2025 13:14:35] Juan: ds
+[26-01-2025 13:14:37] Pepe: s
+[26-01-2025 13:14:38] Juan: df
+[26-01-2025 13:14:40] Pepe: sdfds
+Usuario Juan desconectado
+Usuario Pepe desconectado
+Usuario Juan conectado
+Usuario dfdfd conectado
+Usuario Juan desconectado
+Usuario dfdfd desconectado
+Usuario Juan conectado
+Usuario Juan desconectado
+Usuario Juan conectado
+[26-01-2025 13:19:25] Juan: dfdf
+Usuario Juan desconectado
+Usuario Juan conectado
+[26-01-2025 13:22:56] Juan: dfdf
+[26-01-2025 13:23:10] Juan: dfdf
+Usuario Juan conectado
+Usuario Juan conectado
+Usuario Pepe conectado
+Usuario Juan desconectado
+Usuario Pepe conectado
+[26-01-2025 13:28:25] Pepe: dfdf
+Usuario Lolo conectado
+Usuario Juan conectado
+[26-01-2025 13:30:02] Juan: hola como estas
+Usuario Pepe conectado
+[26-01-2025 13:30:11] Pepe: hola
+[26-01-2025 13:30:12] Pepe: que tal
+Usuario Juan desconectado
+Usuario Pepe desconectado
+Usuario Juan conectado
+[26-01-2025 13:32:04] Juan: hola que tal estas yo llevo mucho tiempo
+Usuario Juan desconectado
+Usuario Juan conectado
+Usuario sd conectado
+Usuario Jose conectado
+[26-01-2025 13:37:18] Jose: hola que tal estas
+Usuario Jose desconectado
