@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import cliente.Client;
 
 public class Username {
@@ -47,15 +48,21 @@ public class Username {
         frame.add(panel);
         frame.setSize(300, 200);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         button.addActionListener(e -> {
-            username = textField.getText();
-            client.setUsername(username);
-            Chat chat = new Chat(username);
-            client.setChat(chat);
-            frame.dispose();
+            try {
+                username = textField.getText();
+                client.setUsername(username);
+                Chat chat = new Chat(username, client);
+                client.setChat(chat);
+                frame.dispose();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(frame, "Error al conectar con el servidor",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         textField.addKeyListener(new KeyAdapter() {

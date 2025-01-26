@@ -2,9 +2,10 @@ package cliente;
 
 import cliente.interfaz.Chat;
 import cliente.interfaz.Username;
+
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Client {
     private Socket socket;
@@ -12,16 +13,13 @@ public class Client {
     private BufferedReader in;
     private String username;
     private Chat chat;
+    private Thread readMessageThread;
 
     public Client(String address, int port) throws IOException {
-        try {
             socket = new Socket(address, port);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("Conectado al servidor en " + address + ":" + port);
-        } catch (IOException e) {
-            System.out.println("No se pudo conectar al servidor");
-        }
     }
 
     public void setUsername(String username) {
@@ -33,23 +31,26 @@ public class Client {
         this.chat = chat;
     }
 
+    public void sendMessage(String message) {
+        out.println(message);
+    }
+
     public void start() {
-        new Thread(new ReadMessage()).start();
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            String message = scanner.nextLine();
-            out.println(message);
-        }
+        readMessageThread = new Thread(new ReadMessage());
+        readMessageThread.start();
     }
 
     public void stop() {
         try {
-            in.close();
-            out.close();
-            socket.close();
-            System.out.println("Cliente desconectado");
+            if (readMessageThread != null && readMessageThread.isAlive()) {
+                readMessageThread.interrupt();
+            }
+            if (in != null) in.close();
+            if (out != null) out.close();
+            if (socket != null) socket.close();
         } catch (IOException e) {
-            System.out.println("Error al cerrar el cliente");
+           JOptionPane.showMessageDialog(null, "Error al desconectar del servidor",
+                   "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -58,15 +59,14 @@ public class Client {
         public void run() {
             try {
                 String message;
-                while ((message = in.readLine()) != null) {
-                    System.out.println(message);
-                    if (chat != null){
+                while (!Thread.currentThread().isInterrupted() && (message = in.readLine()) != null) {
+                    if (chat != null) {
                         chat.addMessage(message);
                     }
                 }
             } catch (IOException e) {
-                System.out.println("Error al leer mensajes del servidor");
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer mensajes del servidor",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -74,10 +74,11 @@ public class Client {
     public static void main(String[] args) {
         try {
             Client client = new Client("localhost", 49000);
-            new Username(client);
             client.start();
+            new Username(client);
         } catch (IOException e) {
-            System.out.println("Error al conectar con el servidor");
+            JOptionPane.showMessageDialog(null, "Error al conectar con el servidor",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

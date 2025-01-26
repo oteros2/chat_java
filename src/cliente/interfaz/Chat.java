@@ -1,7 +1,11 @@
 package cliente.interfaz;
 
+import cliente.Client;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Chat {
     private JFrame frame;
@@ -12,7 +16,7 @@ public class Chat {
     private JButton sendButton;
     private JButton disconnectButton;
 
-    public Chat(String name) {
+    public Chat(String name, Client client) {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
@@ -39,6 +43,28 @@ public class Chat {
         sendButton.setBackground(Color.GREEN);
         disconnectButton.setBackground(Color.RED);
 
+        sendButton.addActionListener(e -> {
+            String message = textField.getText();
+            textField.setText("");
+            if (!message.isEmpty()) {
+              client.sendMessage(message);
+            }
+        });
+
+        disconnectButton.addActionListener(e -> {
+            client.stop();
+            frame.dispose();
+        });
+
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                   sendButton.doClick();
+                }
+            }
+        });
+
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
@@ -59,7 +85,8 @@ public class Chat {
 
         frame.add(panel);
         frame.setSize(800, 800);
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
