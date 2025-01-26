@@ -55,10 +55,12 @@ public class Username {
         button.addActionListener(e -> {
             try {
                 username = textField.getText();
-                client.setUsername(username);
-                Chat chat = new Chat(username, client);
-                client.setChat(chat);
-                frame.dispose();
+                if (!username.isEmpty()) {
+                    client.setUsername(username);
+                    Chat chat = new Chat(username, client);
+                    client.setChat(chat);
+                    frame.dispose();
+                }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(frame, "Error al conectar con el servidor",
                         "Error", JOptionPane.ERROR_MESSAGE);

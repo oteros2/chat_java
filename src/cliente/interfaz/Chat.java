@@ -31,9 +31,11 @@ public class Chat {
         disconnectButton = new JButton("Desconectar");
 
         textField.setPreferredSize(new Dimension(600, 60));
+        textField.setFont(new Font("Arial", Font.PLAIN, 18));
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 18));
 
         usersArea.setEditable(false);
         usersArea.setLineWrap(true);
@@ -52,8 +54,8 @@ public class Chat {
         });
 
         disconnectButton.addActionListener(e -> {
-            client.stop();
             frame.dispose();
+            client.stop();
         });
 
         textField.addKeyListener(new KeyAdapter() {
@@ -85,7 +87,7 @@ public class Chat {
 
         frame.add(panel);
         frame.setSize(800, 800);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -93,5 +95,6 @@ public class Chat {
 
     public void addMessage(String message){
         textArea.append(message + "\n");
+        textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 }

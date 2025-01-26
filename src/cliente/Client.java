@@ -42,12 +42,11 @@ public class Client {
 
     public void stop() {
         try {
-            if (readMessageThread != null && readMessageThread.isAlive()) {
-                readMessageThread.interrupt();
-            }
-            if (in != null) in.close();
-            if (out != null) out.close();
-            if (socket != null) socket.close();
+            readMessageThread.interrupt();
+            in.close();
+            out.close();
+            socket.close();
+            System.exit(0);
         } catch (IOException e) {
            JOptionPane.showMessageDialog(null, "Error al desconectar del servidor",
                    "Error", JOptionPane.ERROR_MESSAGE);
@@ -58,8 +57,8 @@ public class Client {
         @Override
         public void run() {
             try {
-                String message;
-                while (!Thread.currentThread().isInterrupted() && (message = in.readLine()) != null) {
+                while (Thread.currentThread().isAlive()) {
+                    String message = in.readLine();
                     if (chat != null) {
                         chat.addMessage(message);
                     }

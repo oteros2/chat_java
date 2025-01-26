@@ -1,0 +1,10 @@
+Usuario Pepe conectado
+[26-01-2025 12:11:28] Pepe: hola a todos
+Usuario Juan conectado
+[26-01-2025 12:11:41] Juan: que tal estais
+Usuario Juan conectado
+Usuario Lolo conectado
+[26-01-2025 12:12:26] Lolo: hola que tal
+[26-01-2025 12:12:38] Juan: Hola lolo como estas
+Usuario Juan desconectado
+Usuario Lolo desconectado

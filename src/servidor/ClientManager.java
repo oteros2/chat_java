@@ -10,11 +10,13 @@ public class ClientManager implements Runnable {
     private Server server;
     private PrintWriter out;
     private BufferedReader in;
+    private BufferedWriter writer;
     private String clientName;
 
-    public ClientManager(Socket socket, Server server) {
+    public ClientManager(Socket socket, Server server) throws IOException {
         this.socket = socket;
         this.server = server;
+        this.writer = new BufferedWriter(new FileWriter("src/servidor/log.txt", true));
     }
 
     @Override
@@ -25,7 +27,10 @@ public class ClientManager implements Runnable {
 
             // Leer el nombre del cliente
             clientName = in.readLine();
+            System.out.println("Cliente " + clientName + " conectado desde " + socket.getRemoteSocketAddress());
             server.broadcast("Usuario " + clientName + " conectado");
+            writer.write("Usuario " + clientName + " conectado\n");
+            writer.flush();
 
             String message;
             while ((message = in.readLine()) != null) {
@@ -33,15 +38,13 @@ public class ClientManager implements Runnable {
                 String formattedMessage = String.format("[%s] %s: %s", timestamp, clientName, message);
                 System.out.println(formattedMessage);
                 server.broadcast(formattedMessage);
+                writer.write(formattedMessage + "\n");
+                writer.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try {
-                socket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            stop();
         }
     }
 
@@ -54,7 +57,10 @@ public class ClientManager implements Runnable {
             in.close();
             out.close();
             socket.close();
-            System.out.println("Cliente desconectado");
+            System.out.println("Cliente " + clientName + " desconectado");
+            server.broadcast("Usuario " + clientName + " desconectado");
+            writer.write("Usuario " + clientName + " desconectado\n");
+            writer.flush();
         } catch (IOException e) {
             System.out.println("Error al cerrar el cliente");
         }
