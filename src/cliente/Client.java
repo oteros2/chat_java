@@ -15,47 +15,54 @@ public class Client {
     private Thread readMessageThread;
 
     public Client(String address, int port) throws IOException {
-            socket = new Socket(address, port);
-            out = new PrintWriter(socket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println("Conectado al servidor en " + address + ":" + port);
+        socket = new Socket(address, port);
+        out = new PrintWriter(socket.getOutputStream(), true);
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        System.out.println("Conectado al servidor en " + address + ":" + port);
     }
 
+    // Se envia el nombre de usuario al servidor
     public void setUsername(String username) {
         this.username = username;
         out.println(username);
     }
 
+    // Se asigna la interfaz grafica del chat al cliente
     public void setChat(Chat chat) {
         this.chat = chat;
     }
 
+    // Metodo para enviar un mensaje al servidor
     public void sendMessage(String message) {
         out.println(message);
     }
 
+    // Se inicia un hilo para leer los mensajes del servidor
     public void start() {
         readMessageThread = new Thread(new ReadMessage());
         readMessageThread.start();
     }
 
+    // Cierra el cliente
     public void stop() {
-            System.exit(0);
+        System.exit(0);
     }
 
+    // Clase interna para leer los mensajes del servidor
     private class ReadMessage implements Runnable {
         @Override
         public void run() {
             try {
+                // El cliente lee los mensajes del servidor y los muestra en la interfaz grafica
                 while (Thread.currentThread().isAlive()) {
                     String message = in.readLine();
                     if (chat != null) {
-                        if (message.startsWith("Usuarios conectados:\n")) {
-                            chat.updateUsers(message);
-                            System.out.println(message);
-                        } else {
-                            chat.addMessage(message);
+                        // Si el mensaje contiene el nombre de usuario, se reemplaza por "Yo"
+                        if (message.contains(username + ":")) {
+                            message = message.replace(username + ":", "Yo:");
                         }
+                        // Se añade el mensaje a la interfaz grafica
+                        chat.addMessage(message);
                     }
                 }
             } catch (IOException e) {

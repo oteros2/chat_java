@@ -15,6 +15,7 @@ public class Server {
         clients = new ArrayList<>();
     }
 
+    // Se inicia el servidor y se queda constantemente esperando conexiones
     public void start() {
         System.out.println("Servidor iniciado. Esperando conexiones...");
         while (true) {
@@ -23,17 +24,20 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 // Se crea un nuevo hilo para atender al cliente, se le asigna el socket creado y el propio servidor
                 ClientManager clientManager = new ClientManager(socket, this);
-                // Se añade el cliente a la lista de clientes
-                clients.add(clientManager);
-                // Se inicia el hilo que gestiona la entrada y la salida de mensajes del cliente
-                new Thread(clientManager).start();
+                addClient(clientManager);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    // Este metodo se encarga de cerrar el servidor y de cerrar todos los clientes
+    // Se añade un cliente a la lista de clientes y se inicia un hilo para atenderlo
+    public synchronized void addClient(ClientManager clientManager) {
+        clients.add(clientManager);
+        new Thread(clientManager).start();
+    }
+
+    // Metodo para cerrar el servidor y desconectar a todos los clientes
     public void stop() {
         try {
             serverSocket.close();
@@ -46,12 +50,21 @@ public class Server {
         }
     }
 
-    // Este metodo se encarga de enviar un mensaje a todos los clientes excepto al
-    // propio cliente que se pasa como parametro.
+    // Metodo para enviar un mensaje a todos los clientes conectados
     public synchronized void broadcast(String message) {
         for (ClientManager client : clients) {
                 client.sendMessage(message);
             }
+    }
+
+    // Metodo para enviar la lista de usuarios conectados a todos los clientes
+    public synchronized void broadcastUserList() {
+        List<String> users = new ArrayList<>();
+        for (ClientManager client : clients) {
+            users.add(client.getClientName());
+        }
+        String userList = "USERLIST:" + String.join(",", users);
+        broadcast(userList);
     }
 
     public static void main(String[] args) {

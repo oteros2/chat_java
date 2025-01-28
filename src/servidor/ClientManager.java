@@ -22,16 +22,21 @@ public class ClientManager implements Runnable {
     @Override
     public void run() {
         try {
+            // Se crea un flujo de entrada y salida para comunicarse con el cliente
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-            // Leer el nombre del cliente
+            // Se lee el nombre del cliente
             clientName = in.readLine();
             System.out.println("Cliente " + clientName + " conectado desde " + socket.getRemoteSocketAddress());
             server.broadcast("Usuario " + clientName + " conectado");
             writer.write("Usuario " + clientName + " conectado\n");
             writer.flush();
 
+            // Se envia la lista de usuarios conectados a todos los clientes
+            server.broadcastUserList();
+
+            // El servidor lee los mensajes del cliente y los reenvia a todos los clientes conectados
             String message;
             while ((message = in.readLine()) != null) {
                 String timestamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
@@ -45,13 +50,16 @@ public class ClientManager implements Runnable {
             e.printStackTrace();
         } finally {
             stop();
+            server.broadcastUserList();
         }
     }
 
+    // Metodo para enviar un mensaje al cliente
     public void sendMessage(String message) {
         out.println(message);
     }
 
+    // Metodo para cerrar la conexion con el cliente
     public void stop() {
         try {
             in.close();
@@ -66,6 +74,7 @@ public class ClientManager implements Runnable {
         }
     }
 
+    // Metodo para obtener el nombre del cliente
     public String getClientName() {
         return clientName;
     }
