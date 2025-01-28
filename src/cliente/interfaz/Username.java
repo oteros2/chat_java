@@ -1,4 +1,3 @@
-// src/cliente/interfaz/Username.java
 package cliente.interfaz;
 
 import javax.swing.*;
