@@ -34,7 +34,8 @@ public class Server {
     // Se añade un cliente a la lista de clientes y se inicia un hilo para atenderlo
     public synchronized void addClient(ClientManager clientManager) {
         clients.add(clientManager);
-        new Thread(clientManager).start();
+        Thread cliente = new Thread(clientManager);
+        cliente.start();
     }
 
     // Se elimina un cliente de la lista de clientes

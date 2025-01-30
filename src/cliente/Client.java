@@ -25,6 +25,7 @@ public class Client {
     public void setUsername(String username) {
         this.username = username;
         out.println(username);
+        start();
     }
 
     // Se asigna la interfaz grafica del chat al cliente
@@ -74,7 +75,6 @@ public class Client {
     public static void main(String[] args) {
         try {
             Client client = new Client("localhost", 49000);
-            client.start();
             new Username(client);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al conectar con el servidor",

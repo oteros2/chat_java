@@ -17,6 +17,8 @@ public class ClientManager implements Runnable {
         this.socket = socket;
         this.server = server;
         this.writer = new BufferedWriter(new FileWriter("src/servidor/log.txt", true));
+        this.out = new PrintWriter(socket.getOutputStream(), true);
+        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
     @Override
@@ -29,12 +31,13 @@ public class ClientManager implements Runnable {
             // Se lee el nombre del cliente
             clientName = in.readLine();
             System.out.println("Cliente " + clientName + " conectado desde " + socket.getRemoteSocketAddress());
-            server.broadcast("Usuario " + clientName + " conectado");
-            writer.write("Usuario " + clientName + " conectado\n");
-            writer.flush();
 
             // Se envia la lista de usuarios conectados a todos los clientes
             server.broadcastUserList();
+
+            server.broadcast("Usuario " + clientName + " conectado");
+            writer.write("Usuario " + clientName + " conectado\n");
+            writer.flush();
 
             // El servidor lee los mensajes del cliente y los reenvia a todos los clientes conectados
             String message;
