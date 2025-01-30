@@ -37,7 +37,6 @@ public class Chat {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         setupComponents(name);
         setupLayout();
         setupActions(client);
@@ -52,7 +51,7 @@ public class Chat {
     }
 
     private void setupComponents(String name) {
-        frame = new JFrame("Chat - " + name);
+        frame = new JFrame("Usuario - " + name);
         panel = new JPanel();
         panel.setBackground(BACKGROUND_COLOR);
 
@@ -118,7 +117,6 @@ public class Chat {
                 button.setBackground(backgroundColor);
             }
         });
-
         return button;
     }
 
@@ -206,7 +204,6 @@ public class Chat {
                     StyleConstants.setForeground(style, TEXT_COLOR);
                     formattedMessage = message + "\n";
                 }
-
                 doc.insertString(doc.getLength(), formattedMessage, style);
                 textPane.setCaretPosition(doc.getLength());
             }

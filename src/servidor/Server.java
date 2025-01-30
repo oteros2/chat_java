@@ -59,8 +59,8 @@ public class Server {
     // Metodo para enviar un mensaje a todos los clientes conectados
     public synchronized void broadcast(String message) {
         for (ClientManager client : clients) {
-                client.sendMessage(message);
-            }
+            client.sendMessage(message);
+        }
     }
 
     // Metodo para enviar la lista de usuarios conectados a todos los clientes

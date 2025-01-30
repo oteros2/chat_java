@@ -28,7 +28,6 @@ public class Username {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         setupComponents();
         setupLayout();
         setupActions(client);
@@ -151,6 +150,7 @@ public class Username {
                     client.setUsername(username);
                     Chat chat = new Chat(username, client);
                     client.setChat(chat);
+                    client.start();
                     frame.dispose();
                 } else {
                     showError("Por favor ingresa un nombre de usuario");

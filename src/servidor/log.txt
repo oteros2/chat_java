@@ -313,3 +313,132 @@ Usuario Pepe conectado
 [30-01-2025 11:52:01] Pepe: dfd
 Usuario Juan desconectado
 Usuario Pepe desconectado
+Usuario Guille conectado
+[30-01-2025 11:56:25] Guille: czxczckzxc
+[30-01-2025 11:56:25] Guille: zx
+[30-01-2025 11:56:25] Guille: zxc
+[30-01-2025 11:56:26] Guille: xzkcxz
+[30-01-2025 11:56:26] Guille: czx
+[30-01-2025 11:56:26] Guille: cxzc
+[30-01-2025 11:56:26] Guille: xzc
+Usuario Guille desconectado
+Usuario Guille conectado
+[30-01-2025 12:51:53] Guille: ddfdfdf
+[30-01-2025 12:51:54] Guille: sd
+[30-01-2025 12:51:54] Guille: sd
+[30-01-2025 12:51:54] Guille: s
+Usuario Pepe conectado
+[30-01-2025 12:52:21] Pepe: dfdfd
+[30-01-2025 12:52:21] Pepe: ff
+[30-01-2025 12:52:21] Pepe: d
+[30-01-2025 12:52:21] Pepe: fd
+[30-01-2025 12:52:22] Pepe: f
+[30-01-2025 12:52:22] Pepe: df
+[30-01-2025 12:52:26] Guille: Hola
+Usuario Guille desconectado
+Usuario Pepe desconectado
+Usuario Jose conectado
+[30-01-2025 15:56:05] Jose: ddfdf
+[30-01-2025 15:56:05] Jose: df
+[30-01-2025 15:56:06] Jose: df
+Usuario Juan conectado
+[30-01-2025 15:56:20] Juan: dfdf
+Usuario Juan desconectado
+Usuario Jose desconectado
+Usuario Juan conectado
+[30-01-2025 16:01:27] Juan: dfdf
+Usuario Jose conectado
+[30-01-2025 16:01:36] Jose: dfdf
+Usuario Antonio conectado
+[30-01-2025 16:02:13] Juan: dfdf
+[30-01-2025 16:02:17] Antonio: dfdf
+[30-01-2025 16:02:20] Jose: dfdf
+Usuario Juan desconectado
+Usuario Antonio desconectado
+Usuario Jose desconectado
+Usuario Jose conectado
+Usuario Juan conectado
+Usuario Jose desconectado
+Usuario Juan desconectado
+Usuario Juan conectado
+[30-01-2025 16:03:40] Juan: dfd
+Usuario Jose conectado
+Usuario Michel conectado
+Usuario Jose desconectado
+Usuario Juan desconectado
+Usuario Michel desconectado
+Usuario Juan conectado
+Usuario Juan conectado
+Usuario Juan conectado
+Usuario Juan desconectado
+[30-01-2025 16:08:34] Juan: ddf
+Usuario Juan desconectado
+Usuario Juan desconectado
+Usuario Juan conectado
+[30-01-2025 16:21:31] Juan: dfdfd
+[30-01-2025 16:21:32] Juan: df
+[30-01-2025 16:21:32] Juan: df
+Usuario Pepe conectado
+[30-01-2025 16:21:41] Pepe: dfdfdf
+Usuario Pepe desconectado
+Usuario Juan desconectado
+Usuario Juan conectado
+[30-01-2025 16:27:54] Juan: dfdf
+[30-01-2025 16:27:54] Juan: df
+[30-01-2025 16:27:55] Juan: d
+[30-01-2025 16:27:55] Juan: fdf
+Usuario Pepe conectado
+[30-01-2025 16:28:04] Pepe: dfdf
+Usuario Pepe desconectado
+Usuario Juan conectado
+[30-01-2025 16:28:39] Juan: dfdf
+[30-01-2025 16:28:39] Juan: df
+[30-01-2025 16:28:40] Juan: d
+[30-01-2025 16:28:40] Juan: df
+Usuario Pepe conectado
+[30-01-2025 16:28:48] Pepe: dfdfdf
+[30-01-2025 16:28:57] Juan: dfdf
+Usuario Pepe desconectado
+Usuario Juan desconectado
+Usuario Juan conectado
+Usuario Pepe conectado
+Usuario Juan desconectado
+Usuario Pepe desconectado
+Usuario Juan conectado
+[30-01-2025 16:31:18] Juan: Pepe
+Usuario Pepe conectado
+Usuario Juan desconectado
+Usuario Pepe desconectado
+Usuario Juan conectado
+Usuario Juanillo conectado
+Usuario Pepillo conectado
+Usuario Pepe conectado
+Usuario a conectado
+Usuario a conectado
+[30-01-2025 16:36:27] a: d
+[30-01-2025 16:36:28] a: df
+Usuario Juan conectado
+Usuario Pepe conectado
+[30-01-2025 16:37:59] Juan: xc
+[30-01-2025 16:38:00] Juan: sd
+Usuario Juan conectado
+[30-01-2025 16:38:33] Juan: a
+[30-01-2025 16:38:34] Juan: ad
+[30-01-2025 16:38:35] Juan: ds
+Usuario Juan desconectado
+Usuario Juan conectado
+[30-01-2025 16:39:25] Juan: s
+[30-01-2025 16:39:26] Juan: sd
+Usuario Juan desconectado
+Usuario Juan conectado
+[30-01-2025 16:57:48] Juan: Pepe
+[30-01-2025 16:57:49] Juan: sdkjfkjd+
+Usuario Pepe conectado
+Usuario Pepe desconectado
+Usuario Juan desconectado
+Usuario Juan conectado
+Usuario Pepe conectado
+[30-01-2025 16:59:22] Pepe: sdfdf
+[30-01-2025 16:59:24] Juan: dfdfdf
+Usuario Pepe desconectado
+Usuario Juan desconectado

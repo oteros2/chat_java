@@ -25,7 +25,6 @@ public class Client {
     public void setUsername(String username) {
         this.username = username;
         out.println(username);
-        start();
     }
 
     // Se asigna la interfaz grafica del chat al cliente
